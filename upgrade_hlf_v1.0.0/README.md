@@ -36,6 +36,15 @@ To upgrade an orderer or peer, follow these steps:
 
     ./upgrade_entity.sh -e peer0.org1.example.com -t peer -v 2.5.1
 
+# Execute directly in terminal directly.
+
+curl -sSL https://gist.githubusercontent.com/padmarajkore/b9f8a35a7c5aac64ed2739650bd0add9/raw/caf46c85257685b46eb266c5ff684a98f4eb1939/upgrade_entity.sh | bash -s -- -e peer0.org1.example.com -t peer -v 2.5.1
+
+
+curl -sSL https://gist.githubusercontent.com/padmarajkore/b9f8a35a7c5aac64ed2739650bd0add9/raw/caf46c85257685b46eb266c5ff684a98f4eb1939/upgrade_entity.sh | bash -s -- -e peer0.org2.example.com -t peer -v 2.5.1
+
+curl -sSL https://gist.githubusercontent.com/padmarajkore/b9f8a35a7c5aac64ed2739650bd0add9/raw/caf46c85257685b46eb266c5ff684a98f4eb1939/upgrade_entity.sh | bash -s -- -e peer0.org1.example.com -t orderer -v 2.5.1
+
 
 ## Instructions
 
