@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Hyperledger Fabric Network Upgrade Script
-=======
 # UpgradeHLF_v1.0.1 # Hyperledger Fabric Network Upgrade Script
->>>>>>> 6c1300eec7e3094e380d62fe13a71c3d1b7745ce
 
 ## Overview
 
