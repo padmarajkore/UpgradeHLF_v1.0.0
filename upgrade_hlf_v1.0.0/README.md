@@ -36,14 +36,13 @@ To upgrade an orderer or peer, follow these steps:
 
     ./upgrade_entity.sh -e peer0.org1.example.com -t peer -v 2.5.1
 
-# Execute directly in terminal directly.
+# Demo commands:
 
-curl -sSL https://gist.githubusercontent.com/padmarajkore/b9f8a35a7c5aac64ed2739650bd0add9/raw/caf46c85257685b46eb266c5ff684a98f4eb1939/upgrade_entity.sh | bash -s -- -e peer0.org1.example.com -t peer -v 2.5.1
+- ./upgrade_entity.sh -e peer0.org1.example.com -t peer -v 2.5.1
 
+- ./upgrade_entity.sh -e peer0.org2.example.com -t peer -v 2.5.1
 
-curl -sSL https://gist.githubusercontent.com/padmarajkore/b9f8a35a7c5aac64ed2739650bd0add9/raw/caf46c85257685b46eb266c5ff684a98f4eb1939/upgrade_entity.sh | bash -s -- -e peer0.org2.example.com -t peer -v 2.5.1
-
-curl -sSL https://gist.githubusercontent.com/padmarajkore/b9f8a35a7c5aac64ed2739650bd0add9/raw/caf46c85257685b46eb266c5ff684a98f4eb1939/upgrade_entity.sh | bash -s -- -e peer0.org1.example.com -t orderer -v 2.5.1
+- ./upgrade_entity.sh -e orderer.example.com -t orderer -v 2.5.1
 
 
 ## Instructions
@@ -68,6 +67,17 @@ curl -sSL https://gist.githubusercontent.com/padmarajkore/b9f8a35a7c5aac64ed2739
   network.
 
 
-# For more information about Hyperledger Fabric, please visit the official documentation.
+
+
+# You can directly execute this script using terminal by following commands.
+
+- curl -sSL https://bit.ly/3Epd0sM | bash -s -- -e orderer.example.com -t orderer -v 2.5.1
+
+- curl -sSL https://bit.ly/3Epd0sM | bash -s -- -e peer0.org2.example.com -t peer -v 2.5.1
+
+- curl -sSL https://bit.ly/3Epd0sM | bash -s -- -e peer0.org1.example.com -t peer -v 2.5.1
+
+# For more information about Hyperledger Fabric, please visit the [official documentation](https://hlf.readthedocs.io/en/latest/upgrade.html).
+
 
 # For support and inquiries, feel free to open an issue on this repository.

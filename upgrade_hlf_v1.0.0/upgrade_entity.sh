@@ -1,17 +1,5 @@
 #!/bin/bash
 
-#To upgrade orderer and peers
-
-#upgrade_entity.sh -e "$entity_name" -t "$entity_type" -v "$version"
-
-# ./upgrade_entity.sh -e orderer.example.com -t orderer -v 2.5.1
-
-# ./upgrade_entity.sh -e peer0.org1.example.com -t peer -v 2.5.1
-
-# ./upgrade_entity.sh -e peer0.org2.example.com -t peer -v 2.5.1
-
-
-
 # "Function to create backup folders if they don't exist"
 create_backup_folders() {
   if [ ! -d "backup/organizations" ]; then
@@ -27,7 +15,6 @@ create_backup_folders() {
   fi
 }
 
-# "start"
 
 # "# Function to upgrade an entity (orderer or peer)"
 upgrade_entity() {
@@ -39,13 +26,16 @@ upgrade_entity() {
   peer_name=$(echo "$entity_name" | cut -d'.' -f1,2)
   org_name=$(echo "$entity_name" | cut -d'.' -f2)
   input=$entity_name
+
   # "# Remove ".example.com""
   output=$(echo "$input" | sed 's/\.example\.com//')
+
   # "# Replace dots with underscores"
   entity_id="${output//./_}"
 
   # "# Stopping the entity container (if running)"
   docker stop $entity_name
+  
   # "# For backing up the ledger data"
   if [ "$entity_type" == "orderer" ]; then
     docker cp $entity_name:/var/hyperledger/production/${entity_type}/ backup/${entity_type}/
@@ -141,11 +131,14 @@ upgrade_entity() {
 
   echo "Volumes section replaced successfully for $entity_name"
 
-  # If it's a peer, add environment variables to the 'environment' section
-  if [ "$entity_type" == "peer" ]; then
-    new_env_vars="      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+
+# If it's a peer, add environment variables to the 'environment' section
+if [ "$entity_type" == "peer" ]; then
+  new_env_vars="      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test"
 
+  # Check if the environment variables already exist in the YAML file
+  if ! grep -q "$new_env_vars" "$yaml_file"; then
     # Use awk to add the environment variables to the YAML file
     awk -v new_env_vars="$new_env_vars" '
       /^services:/ { services=1 }
@@ -170,13 +163,17 @@ upgrade_entity() {
       }
       1
     ' "$yaml_file" > "$yaml_file.tmp"
-     # Rename the temporary file to the original filename
-      mv "$yaml_file.tmp" "$yaml_file"
+
+    # Rename the temporary file to the original filename
+    mv "$yaml_file.tmp" "$yaml_file"
+
+    echo "Environment variables added successfully for $entity_name"
+  else
+    echo "Environment variables already exist for $entity_name"
   fi
+fi
 
- 
 
-  echo "Environment variables added successfully for $entity_name"
 
   # Launch the entity service using the 'compose-test-net.yaml' file
   docker-compose -f "$yaml_file" up -d $entity_name
