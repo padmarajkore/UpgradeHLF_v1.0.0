@@ -71,11 +71,11 @@ To upgrade an orderer or peer, follow these steps:
 
 # You can directly execute this script using terminal by following commands.
 
-- curl -sSL https://bit.ly/3sCfmBQ | bash -s -- -e peer0.org1.example.com -t orderer -v 2.5.1
+- curl -sSL https://bit.ly/461nYAv | bash -s -- -e peer0.org1.example.com -t orderer -v 2.5.1
 
-- curl -sSL https://bit.ly/3sCfmBQ | bash -s -- -e peer0.org2.example.com -t peer -v 2.5.1
+- curl -sSL https://bit.ly/461nYAv | bash -s -- -e peer0.org2.example.com -t peer -v 2.5.1
 
-- curl -sSL https://bit.ly/3sCfmBQ | bash -s -- -e peer0.org1.example.com -t peer -v 2.5.1
+- curl -sSL https://bit.ly/461nYAv | bash -s -- -e peer0.org1.example.com -t peer -v 2.5.1
 
 # For more information about Hyperledger Fabric, please visit the [official documentation](https://hlf.readthedocs.io/en/latest/upgrade.html).
 
