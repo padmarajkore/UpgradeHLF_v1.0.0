@@ -35,7 +35,7 @@ upgrade_entity() {
 
   # "# Stopping the entity container (if running)"
   docker stop $entity_name
-  
+
   # "# For backing up the ledger data"
   if [ "$entity_type" == "orderer" ]; then
     docker cp $entity_name:/var/hyperledger/production/${entity_type}/ backup/${entity_type}/
@@ -49,7 +49,7 @@ upgrade_entity() {
     docker cp $entity_name:/var/hyperledger/production/ backup/${peer_name}/
 
     # "# For backing up the MSP data"
-    cp -r organizations/${entity_type}Organizations/${org_name}example.com backup/organizations/${entity_type}Organizations
+    cp -r organizations/${entity_type}Organizations/${org_name}.example.com backup/organizations/${entity_type}Organizations
   fi
 
   if [ "$entity_type" == "peer" ]; then
@@ -176,7 +176,10 @@ fi
 
 
   # Launch the entity service using the 'compose-test-net.yaml' file
-  docker-compose -f "$yaml_file" up -d $entity_name
+   docker-compose -f "$yaml_file" up -d $entity_name
+  # view logs
+  #docker-compose -f "$yaml_file" up $entity_name
+
 
   # Inspect containers after upgrading the entity service
   docker ps -a
