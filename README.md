@@ -30,7 +30,7 @@ To upgrade an orderer or peer, follow these steps:
 
 # For example, to upgrade an orderer to version 2.5.1, use the following command:
 
-   ./upgrade_entity.sh -e orderer.example.com -t orderer -v 2.5.1
+    ./upgrade_entity.sh -e orderer.example.com -t orderer -v 2.5.1
 
 # To upgrade a peer to version 2.5.1, use the following command:
 
@@ -38,11 +38,11 @@ To upgrade an orderer or peer, follow these steps:
 
 # Demo commands:
 
-- ./upgrade_entity.sh -e peer0.org1.example.com -t peer -v 2.5.1
+-  ./upgrade_entity.sh -e peer0.org1.example.com -t peer -v 2.5.1
 
-- ./upgrade_entity.sh -e peer0.org2.example.com -t peer -v 2.5.1
+-  ./upgrade_entity.sh -e peer0.org2.example.com -t peer -v 2.5.1
 
-- ./upgrade_entity.sh -e orderer.example.com -t orderer -v 2.5.1
+-  ./upgrade_entity.sh -e orderer.example.com -t orderer -v 2.5.1
 
 
 ## Instructions
@@ -71,11 +71,11 @@ To upgrade an orderer or peer, follow these steps:
 
 # You can directly execute this script using terminal by following commands.
 
-- curl -sSL https://bit.ly/461nYAv | bash -s -- -e peer0.org1.example.com -t orderer -v 2.5.1
+-  curl -sSL https://bit.ly/461nYAv | bash -s -- -e orderer.example.com -t orderer -v 2.5.1
 
-- curl -sSL https://bit.ly/461nYAv | bash -s -- -e peer0.org2.example.com -t peer -v 2.5.1
+-  curl -sSL https://bit.ly/461nYAv | bash -s -- -e peer0.org1.example.com -t peer -v 2.5.1
 
-- curl -sSL https://bit.ly/461nYAv | bash -s -- -e peer0.org1.example.com -t peer -v 2.5.1
+-  curl -sSL https://bit.ly/461nYAv | bash -s -- -e peer0.org2.example.com -t peer -v 2.5.1
 
 # For more information about Hyperledger Fabric, please visit the [official documentation](https://hlf.readthedocs.io/en/latest/upgrade.html).
 
